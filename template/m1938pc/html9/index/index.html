@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+    <title>{$maccms.site_name}</title>
+    <meta name="keywords" content="{$maccms.site_keywords}" />
+    <meta name="description" content="{$maccms.site_description}" />
+ {include file="public/include"}
+	</head>
+	<body>		
+		{include file="public/head"}
+		<style type="text/css">
+
+	.weixin-tip{display: none; position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 99999;}
+	.weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+	</style>	
+		<!--main-->
+
+<div class="container">
+<div class="row"  style="margin-top:10px"></div>
+  <div class="row">
+		<div class="hy-layout clearfix">
+			<div class="col-lg-7 col-md-6 col-sm-12">
+				<div class="swiper-container hy-slide">
+					<div class="swiper-wrapper">
+					
+					{maccms:vod num="3"  type="all" order="desc" by="time"}
+	            				{include file="public/block_slide"}
+	            				{/maccms:vod}
+					</div>
+					<div class="swiper-button-next hidden-xs">
+						<i class="icon iconfont icon-xiangyou"></i>
+					</div>
+					<div class="swiper-button-prev hidden-xs">
+						<i class="icon iconfont icon-xiangzuo"></i>
+					</div>
+					<div class="swiper-pagination">
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-6 col-sm-12 padding-0">
+				<div class="hy-index-menu clearfix">
+					<div class="item">
+						<ul class="clearfix">
+                            <li><a href="{:mac_url('user/index')}d"><i class="icon iconfont icon-zhibo  text-color"></i><span>电视直播</span></a></li>						
+							<li><a href="{maccms:type ids="1" }{:mac_url_type($vo)}{/maccms:type}"><i class="icon iconfont icon-vip text-color"></i><span>会员影院</span></a></li>
+							<li><a href="{maccms:type ids="2" }{:mac_url_type($vo)}{/maccms:type}"><i class="icon iconfont icon-tv_icon text-color"></i><span>电视剧</span></a></li>
+							<li><a href="{:mac_url('user/index')}"><i class="icon iconfont icon-tubiaozhizuomobanyihuifu- text-color"></i><span>会员中心</span></a></li>
+							                  
+						</ul>
+					</div>
+				</div>
+				<div class="hy-index-tags hidden-md clearfix">
+					<div class="item">
+						<ul class="clearfix">
+													{maccms:type ids="6,7,8,9,10,11,12,13" order="asc" by="sort"}															
+									<li><a class="text-overflow" href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>{/maccms:type}					</ul>
+					</div>
+				</div>
+				<div class="hy-right-qrcode hidden-sm hidden-xs">
+					<div class="item">
+						<dl class="clearfix">
+							<dt>	<img class="pic-responsive" src="/static/images/code.png" alt="扫描二维码" /></dt>
+							<dd>
+							<h4>众乐乐影院</h4>
+							<p class="text-muted">
+								按住键盘左下角Ctrl再按D键保存此网站！
+							</p>
+							<p class="margin-0 text-muted">
+								<div id="takeurl"></div>						</p>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>
+<!--抢先看-->
+<script type="text/javascript">
+ var takeurl = window.location.host
+ var tu = document.getElementById("takeurl")
+ tu.innerText = takeurl
+</script>
+
+<div class="container">
+<div class="row"  style="margin-top:10px"></div></div>
+		<div class="hy-layout clearfix">
+			<div class="hy-video-head">
+				<h3 class="margin-0"><i class="icon iconfont icon-vip text-color"></i> 会员影院</h3>
+				
+				<ul class="pull-right"> {maccms:type  ids="parent" order="asc" by="sort"}
+				<li class="text-muted hidden-md hidden-sm hidden-xs">			
+				<a href="{:mac_url_type($vo)}" class="text-muted border-right" />{$vo.type_name}</a> /</li>{/maccms:type}
+	<li class="active"><a href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" class="text-muted">更多 <i class="icon iconfont icon-xiangyou"></i></a></li>
+			</ul>
+			</div>
+			<div class="clearfix">
+				<div class="hy-video-list cleafix">
+					<div class="item">
+					    
+                 {maccms:vod num="12" type="all" order="desc" by="time"}
+							    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+						    		{include file="public/block_video"}							    				    						
+								</div>
+								{/maccms:vod}	
+				
+			</div></div></div>
+			<div class="hy-video-footer visible-xs clearfix">
+				<a href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" class="text-muted">查看更多 <i class="icon iconfont icon-xiangyou pull-right"></i></a>
+			</div>
+		</div>
+		<!--抢先看-->
+<div class="container">
+<div class="row"  style="margin-top:10px"></div></div>
+		<!--电影-->
+		<div class="hy-layout clearfix">
+			<div class="hy-video-head">
+				<ul class="pull-right">
+				{maccms:type  parent="1" order="asc" by="sort"}
+				<li class="text-muted hidden-md hidden-sm hidden-xs"><a href="{:mac_url_type($vo)}" class="text-muted border-right">{$vo.type_name}</a> /</li>
+				{/maccms:type}
+				<li class="active"><a href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" class="text-muted">更多 <i class="icon iconfont icon-xiangyou"></i></a></li>
+				</ul>
+				<h3 class="margin-0"><i class="icon iconfont icon-caidanicondianyinghui text-color"></i>电影</h3>
+			</div>
+			<div class="clearfix">
+  {maccms:vod num="12" type="1" order="desc" by="time"}
+							    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+						    		{include file="public/block_video"}							    				    						
+								</div>
+								{/maccms:vod}	
+		
+
+				<div class="hy-video-footer visible-xs clearfix">
+					<a href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" class="text-muted">查看更多 <i class="icon iconfont icon-xiangyou pull-right"></i></a>
+				</div>
+			</div>
+		</div>		<!--电影-->
+		<div class="container">
+<div class="row"  style="margin-top:10px"></div></div>
+		<!--电视剧-->
+		<div class="hy-layout clearfix">
+			<div class="hy-video-head">
+				<ul class="pull-right">
+				{maccms:type  parent="2" order="asc" by="sort"}
+				<li class="text-muted hidden-md hidden-sm hidden-xs"><a href="{:mac_url_type($vo)}" class="text-muted border-right">{$vo.type_name}</a> /</li>
+				{/maccms:type}
+				<li class="active"><a href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" class="text-muted">更多 <i class="icon iconfont icon-xiangyou"></i></a></li>
+				</ul>
+				<h3 class="margin-0"><i class="icon iconfont icon-tv_icon text-color"></i>电视剧</h3>
+			</div>
+			<div class="clearfix">
+ {maccms:vod num="12" type="2" order="desc" by="time"}
+							    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+						    		{include file="public/block_video"}							    				    						
+								</div>
+								{/maccms:vod}	
+			</div>
+		</div>		<!--电视剧-->
+						<!--综艺-->
+<div class="container">
+<div class="row"  style="margin-top:10px"></div></div>
+		<div class="hy-layout clearfix">
+			<div class="hy-video-head">
+				<ul class="pull-right">
+				{maccms:type  parent="3" order="asc" by="sort"}
+				<li class="text-muted hidden-md hidden-sm hidden-xs"><a href="{:mac_url_type($vo)}" class="text-muted border-right">{$vo.type_name}</a> /</li>
+				{/maccms:type}
+				<li class="active"><a href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" class="text-muted">更多 <i class="icon iconfont icon-xiangyou"></i></a></li>
+				</ul>
+				<h3 class="margin-0"><i class="icon iconfont icon-jiemu text-color"></i>综艺</h3>
+			</div>
+			<div class="clearfix">
+				   {maccms:vod num="12" type="3" order="desc" by="time"}
+							    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+						    		{include file="public/block_video"}							    				    						
+								</div>
+								{/maccms:vod}
+			</div>
+		</div>		<!--综艺-->
+										<!--动漫-->
+<div class="container">
+<div class="row"  style="margin-top:10px"></div></div>
+		<div class="hy-layout clearfix">
+			<div class="hy-video-head">
+				<ul class="pull-right">
+				{maccms:type  parent="4" order="asc" by="sort"}
+				<li class="text-muted hidden-md hidden-sm hidden-xs"><a href="{:mac_url_type($vo)}" class="text-muted border-right">{$vo.type_name}</a> /</li>
+				{/maccms:type}
+				<li class="active"><a href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" class="text-muted">更多 <i class="icon iconfont icon-xiangyou"></i></a></li>
+				</ul>
+				<h3 class="margin-0"><i class="icon iconfont icon-liebiaodaohang_dongman text-color"></i>动漫</h3>
+			</div>
+			<div class="clearfix">
+				   {maccms:vod num="12" type="4" order="desc" by="time"}
+							    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+						    		{include file="public/block_video"}							    				    						
+								</div>
+								{/maccms:vod}
+			</div>
+		</div>		<!--动漫-->
+		<script>
+	    var swiper = new Swiper('.hy-slide', {
+	        pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        autoplay: 3000,
+	        nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+	    });	    
+	    </script>
+		
+		{include file="public/foot"}
+		<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $(".videopic.lazy").lazyload({effect: "fadeIn"});  
+        $("[data-toggle='tooltip']").tooltip();
+    });
+	function ewm(){
+		var url = "http://qr.liantu.com/api.php?text="+window.location.href;
+		$("#ewmtp").attr('src',url);
+		$("#gbewm").css("display","block");
+		$("#gbewm").animate({left:'50%'});
+	}
+	function ewmgb(){
+		$("#gbewm").animate({left:'100%'});
+		$("#gbewm").css("display","none");
+	}
+</script>	
+</body>
+</html>

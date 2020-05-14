@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="robots" content="all" />
+ <title>{$obj.vod_name}详情介绍-{$obj.vod_name}在线观看-{$obj.vod_name}迅雷下载 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}在线收看,{$obj.vod_name}迅雷下载" />
+    <meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div id="header_box"></div>
+<div id="top_box"></div>
+<div class="wrap mt20">
+	<div class="box cat_pos clearfix">
+		<span class="cat_pos_l">您的位置：<a href="{$maccms.path}">首页</a>&nbsp;>&nbsp;<a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a>&nbsp;>&nbsp;
+        <a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>&nbsp;>&nbsp;
+        {$obj.vod_name}在线点播</h1></span>
+	</div>
+</div>
+<div class="wrap mt20">
+	<div class="box">
+		<div class="film_info clearfix">
+			<dl>
+				<dt><img src="{$obj.vod_pic|mac_url_img}" title="{$obj.vod_name}" alt="{$obj.vod_name}" height="260px"/></dt>
+				<dd class="film_title">{$obj.vod_name}</dd>
+				<dd>类型：<span>{$obj.type.type_name}</span></dd>
+				<dd>更新：<span>{$obj.vod_time|date='Y-m-d',###}</span></dd>
+<dd>站长推荐：<span><script type="text/javascript" language="javascript" src="static/js/tj1.js"></script></span></dd>
+<dd>站长推荐：<span><script type="text/javascript" language="javascript" src="static/js/tj2.js"></script></span></dd>
+			</dl>
+			<div id="film_info_box">
+				<div class="film_info_r">
+<script type="text/javascript" language="javascript" src="static/js/dynr.js"></script>
+				</div>
+			</div>
+		</div>
+		{maccms:foreach name="obj.vod_play_list" id="vo"}
+		<div class="film_bar clearfix">
+		<span>{$vo.player_info.show}播放地址：</span><ul><ul>
+		 {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+		<li><a title='{$vo2.name}' href='{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}' target="_blank">{$vo2.name}</a></li>
+		{/maccms:foreach}
+		</ul></ul></div>
+		{/maccms:foreach}
+		<div class="film_photo"></div>
+		
+	</div>
+</div>
+{include file="public/foot"}
+
+</body>
+</html>

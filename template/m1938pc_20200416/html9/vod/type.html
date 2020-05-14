@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="robots" content="all" />
+  <title>{$obj.type_title} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div id="header_box"></div>
+<div id="top_box"></div>
+<div class="wrap mt20">
+	<div class="box cat_pos clearfix">
+		<span class="cat_pos_l">
+		您當前的位置：<a href="/">首頁</a>&nbsp;>&nbsp;<a href='{:mac_url_type($obj)}' >{$obj.type_name}</a> &nbsp;>&nbsp;</h2></span>
+		
+	</div>
+</div>
+<div class="wrap mt20">
+	<div class="box movie_list">
+		<ul>
+			{maccms:vod num="24" paging="yes" type="current" order="desc" by="time"}
+			<li><a href="{:mac_url_vod_detail($vo)}" target="_blank">
+			<img src="{$vo.vod_pic|mac_url_img}" /><h3>{$vo.vod_name}</h3></a></li>
+			{/maccms:vod}
+
+			
+		</ul>
+		<div class="clear"></div>
+		<div class="pagination">
+			{include file="public/paging"}
+		</div>
+	</div>
+</div>
+{include file="public/foot"}
+
+</body>
+</html>

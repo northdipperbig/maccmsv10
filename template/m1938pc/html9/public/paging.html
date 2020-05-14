@@ -1,0 +1,9 @@
+
+
+{maccms:foreach name="$__PAGING__.page_num" id="num"}
+{if condition="$__PAGING__['page_current'] eq $num"}
+<li class="active"><a target="_self" class="on">{$num}</a></li>
+{else}
+<li><a href="{$__PAGING__.page_url|mac_url_page=$num}" target="_self">{$num}</a></li>
+{/if}
+        {/maccms:foreach}

@@ -1,0 +1,160 @@
+			    
+		<div class="container">
+			<div class="row">
+				<!--推荐影片-->			
+				<div class="hy-layout clearfix">											
+					<div class="clearfix">
+						<div class="col-md-5 col-sm-12 col-xs-12">
+							<div class="swiper-container hy-slide">
+						        <div class="swiper-wrapper">				            			
+		            				{maccms:vod num="3"   type="current" order="desc" by="time" level="9"}
+		            				{include file="public/block_slide"}
+		            				{/maccms:vod}						            		
+						        </div>
+						        <div class="swiper-button-next hidden-xs"><i class="icon iconfont icon-right"></i></div>
+            					<div class="swiper-button-prev hidden-xs"><i class="icon iconfont icon-back"></i></div>
+						        <div class="swiper-pagination"></div>
+						   </div>																									    						    																											
+						</div>
+
+                   <div class="col-md-7 col-sm-12 col-xs-12 padding-0">	
+							<div class="hy-video-list clearfix">
+								<div class="item clearfix">
+									{maccms:vod num="4" type="current" order="desc" by="time"  start="1"}	
+								    <div class="col-md-3 col-sm-3 col-xs-4 {if condition="$key gt 3"}hidden-xs{/if}">
+							    		<a class="videopic lazy" href="{:mac_url_vod_play($vo)}" title="{$vo.vod_name}" data-original="{$vo.vod_pic|mac_url_img}" style="background: url({$vo.vod_pic|mac_url_img}) no-repeat; background-position:50% 50%; background-size: cover;" >								
+		<span class="play hidden-xs"></span>										
+		<span class="score">{$vo.vod_hits}</span>						
+</a>
+<div class="title">
+	<h5 class="text-overflow"><a href="{:mac_url_vod_play($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></h5>
+</div>
+<div class="subtitle text-muted text-muted text-overflow hidden-xs">
+	主演：{$vo.vod_actor|mac_substring=6}
+</div>						
+									</div>
+									{/maccms:vod}	
+								</div>															
+							</div>							
+						</div>	
+						
+
+	
+					</div>
+				</div>
+				<!--end 推荐影片-->
+				
+				<div class="hy-layout clearfix">					
+					<div class="hy-min-screen clearfix">
+						<div class="item clearfix">								
+							<dl class="clearfix">
+								<dt class="text-muted">按剧情</dt>
+								<dd class="clearfix">																									
+			{maccms:foreach name=":explode(',',$obj.type_extend.class)" id="vo2" key="key2"}{if condition="$key2 lt 12"}{in name="$key2" value="6"}
+			{/in}
+				<a href="{:mac_url_type($obj,['class'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/if}{/maccms:foreach}
+																			
+								</dd>
+							</dl>							
+							<dl class="cleafix">
+								<dt class="text-muted">按年份</dt>
+								<dd class="clearfix">																								
+								{maccms:foreach name=":explode(',',$obj.type_extend.year)" id="vo2" key="key2"}{if condition="$key2 lt 8"}{in name="$key2" value="4"}
+			{/in}
+				<a href="{:mac_url_type($obj,['year'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/if}{/maccms:foreach}														
+								</dd>
+							</dl>								
+							<dl class="cleafix hidden-sm">
+								<dt class="text-muted">热搜词</dt>
+								<dd class="clearfix">																									
+										{maccms:vod num="6" type="current" order="desc" by="hits"}{in name="$key" value="4"}
+			{/in}
+				<a href="{:mac_url_vod_play($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name|mac_substring=4}</a>{/maccms:vod}
+																		
+								</dd>
+							</dl>															
+						</div>						
+				    </div>
+				</div>
+				
+				<div class="hy-layout clearfix">
+					<div class="hy-video-head">
+						<a href="{:mac_url_type($obj)}" class="text-muted pull-right" title="查看更多">更多 <i class="icon iconfont icon-right"></i></a>
+						<h3 class="margin-0">最近更新</h3>						
+					</div>
+					<div class="hy-video-list cleafix">
+					    <div class="item clearfix">																			
+							{maccms:vod num="6" type="current" order="desc" by="time" }
+						    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+					    		{include file="public/block_video"}							    				    						
+							</div>
+							{/maccms:vod}	
+						</div>
+					</div>
+					<div class="hy-video-text-list hidden-xs clearfix">
+						<div class="item clearfix">
+							<ul class="clearfix">
+								{maccms:vod num="12" type="current" order="desc" by="time" start="9"}
+								<li>	
+									{include file="public/block_videotext"}																											
+								</li>
+								{/maccms:vod}		
+							</ul>
+						</div>							
+					</div>
+					<div class="hy-video-footer visible-xs clearfix">
+						<a href="{:mac_url_type($obj)}" class="text-muted" title="查看更多">查看更多 <i class="icon iconfont icon-right pull-right"></i></a>
+					</div>
+				</div>				
+				<div class="hy-layout clearfix">
+					<div class="hy-video-head">
+						<a href="{:mac_url_type($obj)}" class="text-muted pull-right" title="查看更多">更多 <i class="icon iconfont icon-right"></i></a>
+						<h3 class="margin-0">热门推荐</h3>						
+					</div>
+					<div class="hy-video-list cleafix">
+					    <div class="item clearfix">																			
+							{maccms:vod num="6" type="current" order="desc" by="hits_month"}
+						    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+					    		{include file="public/block_video"}							    				    						
+							</div>
+							{/maccms:vod}	
+						</div>
+					</div>
+					<div class="hy-video-footer visible-xs clearfix">
+						<a href="{:mac_url_type($obj)}" class="text-muted" title="查看更多">查看更多 <i class="icon iconfont icon-right pull-right"></i></a>
+					</div>
+				</div>
+				{maccms:type parent="current" order="asc" by="sort" id="vo2" key="key2"}
+
+				<div class="hy-layout clearfix">
+					<div class="hy-video-head">
+						<a href="{:mac_url_type($vo2,[],'show')}" class="text-muted pull-right" title="查看更多">更多 <i class="icon iconfont icon-right"></i></a>
+						<h3 class="margin-0">{$vo2.type_name}</h3>						
+					</div>
+					<div class="hy-video-list cleafix">
+					    <div class="item clearfix">																			
+							{maccms:vod num="6" type="'.$vo2['type_id'].'" start="1" order="desc" by="time"}
+						    <div class="col-md-2 col-sm-3 col-xs-4 {if-A:{$key} > 6}visible-sm{endif-A}">						    	
+					    			{include file="public/block_video"}						    				    						
+							</div>
+							{/maccms:vod}	
+						</div>
+					</div>	
+					<div class="hy-video-footer visible-xs clearfix">
+						<a href="{:mac_url_type($vo2,[],'show')}" class="text-muted" title="查看更多">查看更多 <i class="icon iconfont icon-right pull-right"></i></a>
+					</div>
+				</div>
+		{/maccms:type}
+
+			</div>
+		</div>
+
+		<script>	    
+	    var swiper = new Swiper('.hy-slide', {
+	        pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        autoplay: 3000,
+	        nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+	    });	  
+	    </script>

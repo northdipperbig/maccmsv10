@@ -1,0 +1,67 @@
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?22395dcf9c194eefd43a211ed91076e7";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+	<div class="nav_bar">
+			<div class="wrap">
+				<span class="domain"><b><font color="#ffffff" size="6">
+				{$maccms.site_url}</font></b></span><div class="nav_bar_r">
+
+					<font color="#ffffff" size="4">{$maccms.site_name}免费观看网站-{$maccms.site_name}网站在线观看-{$maccms.site_name}高清免费观看</font></div>
+			</div>
+		</div>
+<div id="top_box">
+	<div class="wrap mt20 clearfix">
+		<div class="box top_box">
+			<ul>
+<script type="text/javascript" language="javascript" src="{$maccms.path_tpl}static/js/xx1.js"></script>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="header_box">
+	<div class="wrap mt20 nav">
+		<ul class="nav_menu clearfix">
+			<li class="active">在线点播</li>
+			{maccms:type ids="1,2,3,4,5,6,7,8" order="asc" by="sort"}
+			<li><a href="{:mac_url_type($vo)}" target="_blank">{$vo.type_name}</a></li>{/maccms:type}
+
+			
+		</ul>
+		<ul class="nav_menu clearfix">
+			<li class="active">激情小说</li>
+			
+			{maccms:type ids="9,10,11,12,13,14,15,16" order="asc" by="sort"}
+			<li><a href="{:mac_url_type($vo)}" target="_blank">{$vo.type_name}</a></li>{/maccms:type}
+			
+		</ul>
+		<ul class="nav_menu clearfix">
+			<li class="active">激情图区</li>
+			
+			{maccms:type ids="17,18,3,4,5,6,7,8" order="asc" by="sort"}
+			<li><a href="{:mac_url_type($vo)}" target="_blank">{$vo.type_name}</a></li>{/maccms:type}
+			
+		</ul>
+	<script type='text/javascript' src='{$maccms.path_tpl}static/js/dh.js'></script>
+	</div>
+</div>
+<div id="top_box">
+	<div class="wrap mt20 clearfix">
+		<div class="box top_box">
+			<ul>
+                          <script type="text/javascript" language="javascript" src="{$maccms.path_tpl}static/js/xx2.js"></script>
+                        <div class="l seach_tag"><strong>热门TAG：</strong>
+						{maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}
+						<a href="{:mac_url('vod/search',['wd'=>$vo2])}">{$vo2}</a> {/maccms:foreach}
+						
+</div>			</ul>
+		</div>
+	</div>
+</div>

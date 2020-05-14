@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>电视在线直播 - {$maccms.site_name}</title>
+<meta name="keywords" content="电视在线直播,{$maccms.site_name},手机在线播放" />
+<meta name="description" content="留言本-最新电影,手机在线播放,伦理电影,吉吉,吉吉影音,吉吉影院,泥巴影音,好看的电影,好看的电视剧" />	
+ {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+
+<div class="main">
+<SCRIPT language=javascript type=text/javascript>
+<!--
+document.oncontextmenu=new Function('event.returnValue=false;');
+document.onselectstart=new Function('event.returnValue=false;');
+-->
+  </SCRIPT>
+<script>
+function onKeyDown()
+{
+ if ((event.keyCode==116)||(window.event.ctrlKey)||(window.event.shiftKey)||(event.keyCode==122))
+ {
+ event.keyCode=0;
+ event.returnValue=false;
+ }
+}
+</script>
+<script>
+function yxl() { 
+if(window.event.altKey) 
+{
+window.event.returnValue=false;
+}
+}
+document.onkeydown=yxl 
+</script>
+
+</head>
+<body class="vod-type apptop">
+<div class="container">
+<div class="row"  style="margin-top:10px"></div>
+	<div class="row">
+		<div class="hy-player clearfix">
+			<div class="item">
+				<div class="col-sm-12 padding-0">
+<iframe id="iframe-player" name="iframe-player" src="http://www.cietv.com/images/img/100" width="100%" height="600" scrolling="no" frameborder="0"></iframe>
+
+</div>
+</div>
+ <div class="footer clearfix" id="xlu" style="display:inline-block; height:auto; background:none">
+<span class="text-muted" id="xlus">
+
+<a href="http://www.cietv.com/images/img/100" class="btn btn-sm btn-default" target="iframe-player">直播源1</a>
+<a href="http://tv.bingdou.net/live.html" class="btn btn-sm btn-default" target="iframe-player">直播源2</a>
+						</span></div>
+	</div>
+</div></div>
+{include file="public/foot"}
+<!--/禁止右键-->
+<script type="text/javascript"> document.body.oncontextmenu=document.body.ondragstart= document.body.onselectstart=document.body.onbeforecopy=function(){return false;};
+document.body.onselect=document.body.oncopy=document.body.onmouseup=function(){document.selection.empty();}; </script>
+</body>
+</html>

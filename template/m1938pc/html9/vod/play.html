@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+    <meta name="description" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+    {include file="public/include"}
+	<link href="{$maccms.path_tpl}css/home.css" rel="stylesheet" type="text/css" />
+	<link href="/static/css/video-js.min.css" rel="stylesheet" type="text/css" />
+<script src="{$maccms.path}static/js/jquery.js"></script>
+<script src="{$maccms.path}static/js/jquery.lazyload.js"></script>
+<script src="{$maccms.path}static/js/jquery.autocomplete.js"></script>
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+<script src="{$maccms.path}static/js/home.js"></script>
+<script></script>
+
+	<style type="text/css">
+  #timer{background: rgba(0, 0, 0, 0.59);padding: 5px;text-align: center;width: 30px;position: absolute;top: 5%;right: 2%;color: #fff;font-size: 16px;border-radius: 50%;height: 30px;line-height: 20px}
+  #xiang{background: rgba(177, 13, 13, 0.87);padding: 5px;text-align: center;width: auto;position: absolute;bottom: 2%;right: 1%;color: #fff;font-size: 16px;border-radius: 10px;height: 20px;line-height: 9px}
+  #ys,.jkbtn {background: #204060;color: #fff;}
+    </style>
+</head>
+
+<body class="vod-play">
+
+	<style type="text/css">
+
+	.weixin-tip{display: none; position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 99999;}
+	.weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+	</style>
+{include file="public/head"}
+
+<div class="container">
+<div class="row"  style="margin-top:10px"></div>
+	<div class="row">
+		<div class="hy-player clearfix">
+			<div class="item">
+				<div class="col-md-9 col-sm-12 padding-0">
+							<div>
+								<video id="my-video" class="video-js vjs-big-play-centered vjs-default-skin vjs-16-9" controls preload="auto" poster="/m.jpg"
+									data-setup="{}" >
+<!--手机视频尺寸调整-->
+									<!-- mp4  type="video/mp4"
+									m3u8 type="application/x-mpegURL"
+									webm  type='video/webm'
+									ogv type='video/ogg' -->
+									<source src="{$obj['player_info']['url']}" type="application/x-mpegURL">
+									<source src="{$obj['vod_play_list'][1]['urls'][1]['url']}" type="application/x-mpegURL">
+
+									<p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser
+											that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a> </p>
+								</video>
+							</div>
+							<div class="footer clearfix">
+								<ul class="cleafix hidden-sm hidden-xs">										
+									<li><a class="btn btn-sm btn-default" onclick="MacPlayer.GoPreUrl();return false;" href="{$obj.player_info.link_pre}"><i class="icon iconfont icon-rewind1"></i> 上一集</a></li>
+									<li class=""><a class="btn btn-sm btn-default" onclick="MacPlayer.GoNextUrl();return false;" href="{$obj.player_info.link_next}">下一集 <i class="icon iconfont icon-fastforward"></i></a></li>
+									<li><a class="btn btn-sm btn-default"  href="javascript:;" onclick="MAC.Gbook.Report('编号【{$obj.vod_id}】名称【{$obj.vod_name}】不能观看请检查修复，页面地址' + location.href)"/> <i class="icon iconfont icon-collection"></i> 报错</a></li>
+									
+									<!--<li><a class="btn btn-sm btn-default" href="javascript:AddFav('{playpage:id}','')"> <i class="icon iconfont icon-collection"></i> 收藏</a></li>-->
+									
+									<li><span class="bdsharebuttonbox"><a href="#" class="btn btn-sm btn-default share" data-cmd="more"><i class="icon iconfont icon-share"></i>  分享</a></span></li>
+								</ul>
+								<!--<a class="text-muted pull-right" href="javascript:AddFav('{playpage:id}','')"> <i class="icon iconfont icon-collection"></i> 收藏</a>-->
+								<span class="text-muted">正在播放：</span><a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" title="{$obj.vod_name}">{$obj.vod_name}</a>【 {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}】																																							
+						    </div>
+						</div>
+						<div class="col-md-3 col-sm-12 padding-0">
+							<div class="sidebar">
+								<div class="hy-play-list play">
+									<div class="item tyui" id="playlist">								
+										{maccms:foreach name="obj.vod_play_list" id="vo"}								
+										<div class="panel clearfix">
+											<a class="option collapsed" data-toggle="collapse" data-parent="#playlist" href="#playlist{$key}">
+												<span class="text-muted pull-right">当前播放线路{$vo.player_info.show}<i class="icon iconfont icon-right"></i></span>
+												{$vo.player_info.show}
+											</a>
+											<div id="playlist{$key}" class="playlist collapse in">											
+												<ul class="playlistlink-{$key} list-15256 clearfix">
+													{maccms:foreach name="vo.urls" id="vo2"}
+												<li><a title='{$vo2.name}' href='{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}' target="_self">{$vo2.name}</a></li>{/maccms:foreach}
+												</ul>											
+											</div>
+										</div>	
+										{/maccms:foreach}
+									</div>
+									
+							    </div>
+							</div>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">	
+				<div class="col-md-9 col-sm-12 hy-main-content">
+					
+					<div class="hy-layout clearfix">
+						<div class="hy-switch-tabs">
+							<ul class="nav nav-tabs">	
+								<li class="active"><a href="#list3" data-toggle="tab">剧情介绍</a></li>	
+																																			
+							</ul>
+						</div>						
+						<div class="tab-content">	
+							
+							<div class="hy-play-list tab-pane fade in" id="list2">
+								<div class="item" id="downlist">	
+									
+									</div>								
+								</div>	
+								<div class="hy-play-list tab-pane fade in active" id="list3">
+									<div class="item">
+										<div class="plot">
+											{$obj.vod_content}
+										</div>
+									</div>												
+								</div>	
+							</div>						
+					    </div>					
+						<!--相关-->	
+						<div class="hy-layout clearfix">
+					    	<div class="hy-video-list">
+						    	<div class="hy-video-head">
+									<h3 class="margin-0">猜你喜欢</h3>						
+								</div>
+								<div class="swiper-container hy-switch">
+							        <div class="swiper-wrapper">				            			
+			            				{maccms:vod num="10" type="current" order="desc" by="time"}
+			            				<div class="swiper-slide">
+			            					<div class="item">
+			            						<a class="videopic lazy" href="{:mac_url_vod_play($vo)}" title="{$vo.vod_name}" data-original="{$vo.vod_pic|mac_url_img}" style="background: url({$vo.vod_pic|mac_url_img}) no-repeat; background-position:50% 50%; background-size: cover;" >								
+		<span class="play hidden-xs"></span>										
+		<span class="score">{$vo.vod_hits}</span> 						
+</a>
+<div class="title">
+	<h5 class="text-overflow"><a href="{:mac_url_vod_play($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></h5>
+</div>
+<div class="subtitle text-muted text-muted text-overflow hidden-xs">
+	主演：{$vo.vod_actor}
+</div>			
+			            					</div>	
+			            				</div>
+			            				{/maccms:vod}						            		
+							        </div>
+							        <div class="swiper-button-next"><i class="icon iconfont icon-xiangyou"></i></div>
+	                                <div class="swiper-button-prev"><i class="icon iconfont icon-xiangzuo"></i></div>
+							   </div>
+							   <div class="hy-video-text-list hidden-xs clearfix">
+									<div class="item">
+										<ul class="clearfix">
+											{maccms:vod num="10" type="current" order="desc" by="time" start="11"}
+											<li class="list5 {if condition="$key lt 18"}hidden-sm{/if}">	
+												{include file="public/block_videotext"}																											
+											</li>
+											{/maccms:vod}		
+										</ul>
+									</div>							
+								</div>
+							</div>						   
+						</div>	
+						<!--end 相关-->
+						<!--评论-->
+						<div class="hy-layout clearfix">
+							<div class="hy-video-head">
+								<h3 class="margin-0">影片评论</h3>						
+							</div>
+							<!--PC和WAP自适应版-->
+    <div class="mac_comment" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" ></div>
+    <script>
+        $(function(){
+            MAC.Comment.Login = {$comment.login};
+            MAC.Comment.Verify = {$comment.verify};
+            MAC.Comment.Init();
+            MAC.Comment.Show(1);
+        });
+    </script>
+						</div>						
+						<!--end 评论-->
+					</div>
+				<div class="col-md-3 col-sm-12 hy-main-side hidden-sm hidden-xs">	
+					<div class="hy-layout clearfix">
+						<div class="hy-video-ranking side clearfix">
+							<div class="head">
+								<a class="text-muted pull-right" href="{maccms:type ids="1"}{:mac_url_type($vo)}{/maccms:type}" title="更多">
+									更多 <i class="icon iconfont icon-right"></i></a>
+									<h4><i class="icon iconfont icon-top text-color"></i> {$obj.type.type_name}排行榜</h4>
+								</div>
+								<div class="item">											
+									<ul class="clearfix">
+						    			{maccms:vod num="9" type="current" order="desc" by="hits_month"}
+										{include file="public/block_ranking"}
+										{/maccms:vod}											
+					    	   </ul>											
+							</div>
+						</div>							
+					</div>
+				</div>
+				
+		    </div>
+	    </div>
+		<script>
+	    var swiper = new Swiper('.hy-switch', {
+	        pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        slidesPerView: 5,
+	        spaceBetween: 0,
+	        nextButton: '.swiper-button-next',
+	        prevButton: '.swiper-button-prev',
+	        breakpoints: {
+	            1200: {
+	                slidesPerView: 4,
+	                spaceBetween: 0
+	            },
+	            767: {
+	                slidesPerView: 3,
+	                spaceBetween: 0					            
+	            }
+	        }
+	    });	 
+	    </script>
+	    {include file="public/foot"}
+		<script type="text/javascript ">
+					$MH.limit = 10;
+					$MH.WriteHistoryBox(200, 170, 'font');
+					$MH.recordHistory({
+						name: '{$obj.vod_name}',
+						link: this.location.href,
+                      	pic: '{$obj.vod_pic|mac_url_img}'
+						
+					})
+				</script>
+				 <script src="/static/js/video.min.js"></script>
+				 <script type="text/javascript">
+						 //设置中文
+						 videojs.addLanguage('zh-CN', {
+								 "Play": "播放",
+								 "Pause": "暂停",
+								 "Current Time": "当前时间",
+								 "Duration": "时长",
+								 "Remaining Time": "剩余时间",
+								 "Stream Type": "媒体流类型",
+								 "LIVE": "直播",
+								 "Loaded": "加载完毕",
+								 "Progress": "进度",
+								 "Fullscreen": "全屏",
+								 "Non-Fullscreen": "退出全屏",
+								 "Mute": "静音",
+								 "Unmute": "取消静音",
+								 "Playback Rate": "播放速度",
+								 "Subtitles": "字幕",
+								 "subtitles off": "关闭字幕",
+								 "Captions": "内嵌字幕",
+								 "captions off": "关闭内嵌字幕",
+								 "Chapters": "节目段落",
+								 "Close Modal Dialog": "关闭弹窗",
+								 "Descriptions": "描述",
+								 "descriptions off": "关闭描述",
+								 "Audio Track": "音轨",
+								 "You aborted the media playback": "视频播放被终止",
+								 "A network error caused the media download to fail part-way.": "网络错误导致视频下载中途失败。",
+								 "The media could not be loaded, either because the server or network failed or because the format is not supported.": "视频因格式不支持或者服务器或网络的问题无法加载。",
+								 "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "由于视频文件损坏或是该视频使用了你的浏览器不支持的功能，播放终止。",
+								 "No compatible source was found for this media.": "无法找到此视频兼容的源。",
+								 "The media is encrypted and we do not have the keys to decrypt it.": "视频已加密，无法解密。",
+								 "Play Video": "播放视频",
+								 "Close": "关闭",
+								 "Modal Window": "弹窗",
+								 "This is a modal window": "这是一个弹窗",
+								 "This modal can be closed by pressing the Escape key or activating the close button.": "可以按ESC按键或启用关闭按钮来关闭此弹窗。",
+								 ", opens captions settings dialog": ", 开启标题设置弹窗",
+								 ", opens subtitles settings dialog": ", 开启字幕设置弹窗",
+								 ", opens descriptions settings dialog": ", 开启描述设置弹窗",
+								 ", selected": ", 选择",
+								 "captions settings": "字幕设定",
+								 "Audio Player": "音频播放器",
+								 "Video Player": "视频播放器",
+								 "Replay": "重播",
+								 "Progress Bar": "进度小节",
+								 "Volume Level": "音量",
+								 "subtitles settings": "字幕设定",
+								 "descriptions settings": "描述设定",
+								 "Text": "文字",
+								 "White": "白",
+								 "Black": "黑",
+								 "Red": "红",
+								 "Green": "绿",
+								 "Blue": "蓝",
+								 "Yellow": "黄",
+								 "Magenta": "紫红",
+								 "Cyan": "青",
+								 "Background": "背景",
+								 "Window": "视窗",
+								 "Transparent": "透明",
+								 "Semi-Transparent": "半透明",
+								 "Opaque": "不透明",
+								 "Font Size": "字体尺寸",
+								 "Text Edge Style": "字体边缘样式",
+								 "None": "无",
+								 "Raised": "浮雕",
+								 "Depressed": "压低",
+								 "Uniform": "均匀",
+								 "Dropshadow": "下阴影",
+								 "Font Family": "字体库",
+								 "Proportional Sans-Serif": "比例无细体",
+								 "Monospace Sans-Serif": "单间隔无细体",
+								 "Proportional Serif": "比例细体",
+								 "Monospace Serif": "单间隔细体",
+								 "Casual": "舒适",
+								 "Script": "手写体",
+								 "Small Caps": "小型大写字体",
+								 "Reset": "重启",
+								 "restore all settings to the default values": "恢复全部设定至预设值",
+								 "Done": "完成",
+								 "Caption Settings Dialog": "字幕设定视窗",
+								 "Beginning of dialog window. Escape will cancel and close the window.": "开始对话视窗。离开会取消及关闭视窗",
+								 "End of dialog window.": "结束对话视窗"
+						 });
+ 
+ 
+ 
+ 
+ 
+ 
+						 var myPlayer = videojs('my-video',{
+								 autoplay:true
+						 });
+						 videojs("my-video").ready(function () {
+								 var myPlayer = this;
+								 myPlayer.play();
+						 });
+ 
+				 </script>
+    </body>
+</html>

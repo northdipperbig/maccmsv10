@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+    <title>{$obj.type_title} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+ {include file="public/include"}
+<link href="{$maccms.path_tpl}css/style1.css" rel="stylesheet">
+</head>
+<body>
+{include file="public/head"}
+<div class="main">
+<h1 class="title"><a href="{$maccms.path}">首页</a>>
+        <a href="{:mac_url_type($obj)}">{$obj.type_name}</a>></h1>
+<div class="sy-jg mb">
+     <p class="jg">
+      <span class="count">{$obj.type_name}</span>
+     </p>
+</div>
+      <div class="row-l">
+
+        <div class="index-area clearfix">
+	<ul>
+           {maccms:art num="30" paging="yes" type="current" order="desc" by="time"}
+            <li class="p1 m1"><a class="link-hover" href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}">
+              <img class="lazy" data-original="{$vo.art_pic|mac_url_img}" src="{$maccms.path_tpl}images/load.gif" alt="{$vo.art_name}"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo.art_name}
+</p><p class="actor">{$vo.art_name}</p><p class="actor">{$vo.type.type_name}</p><p class="actor"></p></span><p class="other"><i>{$vo.art_time|date='m-d',###}</i></p></a>
+    </li>
+           {/maccms:art} 
+             
+          </ul>
+        </div>
+      </div>
+<div class="page mb clearfix">
+ {include file="public/paging"}
+</div> 	  
+
+<div class="select">
+<div class="selectlist clearfix"></div>
+</div>
+</div>
+
+<!--/底部-->
+{include file="public/foot"}
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="robots" content="all" />
+    <title>{$obj.art_name} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.art_name}最新资讯,推荐资讯" />
+    <meta name="description" content="{$obj.art_name}最新资讯,推荐资讯" />
+ {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div id="header_box"></div>
+<div id="top_box"></div>
+<div class="wrap mt20">
+	<div class="box cat_pos clearfix">
+		<span class="cat_pos_l">您的位置：<a href='/'>首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;
+       <a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;
+        {$obj.art_name}&nbsp;&</span>
+	</div>
+</div>
+<div class="wrap mt20">
+	<div class="box pic_text">
+		<div class="page_title">{$obj.art_name}</div>
+		<div id="pic_text_top">
+			<div class="pic_text_box">
+			<script type="text/javascript" language="javascript" src="static/js/xn.js"></script>	
+			</div>
+		</div>
+		<div class="content">
+<h1>{$obj.art_name}</h1>
+{$obj.art_page_list[$param['page']]['content']}<br /><!----><!----></div>
+
+		<ul><span>{maccms:art num="2" ids="'.$obj['vod_rel_art'].'" order="desc" by="time"}
+   
+             
+{if condition="$key neq '1'"}<span>下一篇:  </span>  <a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}"><span>{$vo.art_name}</span></a> {/if}
+{if condition="$key neq '2'"}<span>上一篇:  </span>  <a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}"><span>{$vo.art_name}</span></a> {/if}
+    {/maccms:art}</span> </ul>
+	</div>
+</div>
+		<div class="clear"></div>
+		<div class="pagination">
+			
+		</div>
+	</div>
+
+
+{include file="public/foot"}
+
+</body>
+</html>
